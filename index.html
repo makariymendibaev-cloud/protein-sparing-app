@@ -31,7 +31,7 @@
             .app-container { height: 90vh; max-height: 850px; border-radius: 2rem; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); border: 1px solid #e2e8f0; }
         }
 
-        .tab-content { display: none; flex-grow: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: 90px; padding-top: 1rem; }
+        .tab-content { display: none; flex-grow: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: 120px; padding-top: 1rem; }
         .tab-content.active { display: block; animation: fadeIn 0.2s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
         
@@ -65,7 +65,7 @@
         input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 10px; cursor: pointer; background: linear-gradient(to right, #10b981, #3b82f6); border-radius: 5px; box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); }
         input[type=range]:focus { outline: none; }
         
-        .bottom-nav { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-top: 1px solid #e2e8f0; display: flex; justify-content: space-around; padding: 0.5rem 0; z-index: 50; padding-bottom: env(safe-area-inset-bottom, 0.75rem); }
+        .bottom-nav { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-top: 1px solid #e2e8f0; display: flex; justify-content: space-around; padding-top: 0.5rem; z-index: 50; padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px)); }
         .nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 25%; color: #94a3b8; font-size: 0.65rem; font-weight: 700; background: none; border: none; outline: none; cursor: pointer; transition: all 0.2s; padding: 0.25rem; touch-action: manipulation;}
         .nav-item svg { width: 24px; height: 24px; margin-bottom: 4px; transition: all 0.2s; }
         .nav-item.active { color: #3b82f6; }
@@ -88,16 +88,16 @@
 <div class="hidden bg-pink-500 text-white"></div>
 
 <div class="app-container">
-    <header class="bg-white px-5 pt-8 pb-5 border-b border-slate-200 z-10 relative flex-shrink-0 shadow-sm">
+    <header class="bg-white px-5 pt-8 pb-6 border-b border-slate-200 z-10 relative flex-shrink-0 shadow-sm">
         <div class="absolute top-4 right-4 bg-slate-100 rounded-lg p-1 flex shadow-inner">
             <button onclick="setLang('ru')" id="btn-ru" class="px-2.5 py-1 text-[10px] font-bold bg-white text-blue-600 rounded shadow-sm uppercase tracking-wide">RU</button>
             <button onclick="setLang('en')" id="btn-en" class="px-2.5 py-1 text-[10px] font-bold text-slate-400 hover:text-slate-600 uppercase tracking-wide">EN</button>
         </div>
         
-        <!-- НЕЙТРАЛЬНАЯ ШАПКА -->
+        <!-- КОММЕРЧЕСКАЯ ШАПКА БЕЗ ИМЕН И БРЕНДОВ -->
         <h1 class="text-2xl font-black text-slate-800 text-center tracking-tight mt-4 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-800 to-slate-500" data-ru="ICU Nutri-Calculator" data-en="ICU Nutri-Calculator">ICU Nutri-Calculator</h1>
         <p class="text-[10px] text-blue-600 font-extrabold uppercase tracking-widest text-center mt-1.5" data-ru="КАЛЬКУЛЯТОР НУТРИТИВНОЙ ПОДДЕРЖКИ" data-en="NUTRITIONAL SUPPORT CALCULATOR">КАЛЬКУЛЯТОР НУТРИТИВНОЙ ПОДДЕРЖКИ</p>
-        <p class="text-[10px] text-slate-400 font-medium text-center mt-0.5" data-ru="На базе алгоритмов ФАР и ESPEN" data-en="Based on FAR & ESPEN Guidelines">На базе алгоритмов ФАР и ESPEN</p>
+        <p class="text-[10px] text-slate-400 font-medium text-center mt-2" data-ru="На базе актуальных клинических рекомендаций" data-en="Based on current clinical guidelines">На базе актуальных клинических рекомендаций</p>
     </header>
 
     <!-- TAB 1: ПАЦИЕНТ -->
@@ -519,9 +519,9 @@
                 <div id="auto-en-calc-result" class="text-[10px] text-blue-700 font-medium mt-2 hidden"></div>
             </div>
 
-            <!-- ИНТЕРАКТИВНЫЙ КАЛЬКУЛЯТОР ФУНКЦИИ ЖКТ -->
+            <!-- ИНТЕРАКТИВ КАЛЬКУЛЯТОР ФУНКЦИИ ЖКТ -->
             <div class="pt-4 border-t border-slate-200">
-                <h4 class="text-xs font-bold text-slate-800 mb-3 uppercase tracking-wide" data-ru="Оценка функции ЖКТ (ESPEN)" data-en="GI Function Assessment (ESPEN)">Оценка функции ЖКТ (ESPEN)</h4>
+                <h4 class="text-xs font-bold text-slate-800 mb-3 uppercase tracking-wide" data-ru="Оценка функции ЖКТ" data-en="GI Function Assessment">Оценка функции ЖКТ</h4>
                 
                 <div class="space-y-3 mb-4">
                     <div class="flex flex-col">
@@ -587,38 +587,52 @@
             </div>
         </div>
 
-        <!-- КАРТОЧКА ПАРЕНТЕРАЛЬНОГО ПИТАНИЯ (ИНТЕГРАЦИЯ) -->
+        <!-- КАРТОЧКА ПАРЕНТЕРАЛЬНОГО ПИТАНИЯ (КОММЕРЧЕСКАЯ ВЕРСИЯ) -->
         <div class="card border-l-4 border-l-blue-500">
             <h3 class="text-xs font-extrabold text-slate-500 mb-3 uppercase tracking-wide" data-ru="Парентеральное Питание (ПП)" data-en="Parenteral Nutrition (PN)">Парентеральное Питание (ПП)</h3>
             
-            <div class="mb-3">
+            <!-- SMART ALERT ДЛЯ СОПУТСТВУЮЩИХ ПАТОЛОГИЙ -->
+            <div id="smart-comorb-alert" class="hidden mb-3 p-3 bg-red-50 border border-red-200 rounded-xl text-[11px] leading-tight text-red-800 shadow-sm"></div>
+            
+            <!-- Скрытый Select -->
+            <div class="mb-3 hidden">
                 <select id="pn-type" onchange="calculateAll()" class="w-full text-xs font-bold text-slate-700 p-2.5 border-2 border-blue-300 rounded-xl bg-blue-50 outline-none focus:border-blue-500 appearance-none cursor-pointer shadow-sm text-blue-800">
-                    <option value="amiparenxyl" data-ru="АМИПАРЕНКСИЛ (Ксилитол + Электролиты)" data-en="AMIPARENXYL (Xylitol + Lytes)">АМИПАРЕНКСИЛ (Ксилитол + Электролиты)</option>
-                    <option value="amiparcenin" selected data-ru="АМИПАРЦЕНИН (Высокобелковый для ЦВ)" data-en="AMIPARCENIN (High protein for CVC)">АМИПАРЦЕНИН (Высокобелковый для ЦВ)</option>
+                    <option value="amiparenxyl" data-ru="АМИПАРЕНКСИЛ (~4%, Ксилитол + Электролиты)" data-en="AMIPARENXYL (~4%, Xylitol + Lytes)">АМИПАРЕНКСИЛ (~4%, Ксилитол + Электролиты)</option>
+                    <option value="amiparcenin" selected data-ru="АМИПАРЦЕНИН (10%, Высокобелковый для ЦВ)" data-en="AMIPARCENIN (10%, High protein for CVC)">АМИПАРЦЕНИН (10%, Высокобелковый для ЦВ)</option>
                     <option value="3in1" data-ru="Смесь «Три-в-одном» (Белки + Жиры + Углеводы)" data-en="All-in-one mix (Protein + Fat + Carbs)">Смесь «Три-в-одном» (Белки + Жиры + Углеводы)</option>
                 </select>
             </div>
 
             <!-- ИНТЕРАКТИВНЫЕ ИКОНКИ БРЕНДОВ -->
-            <div id="pn-images" class="flex gap-2 mb-3 items-stretch">
+            <div id="pn-images" class="grid grid-cols-3 gap-2 mb-3 items-stretch">
                 <!-- Амипаренксил (Голубенькая) -->
-                <div id="card-amiparenxyl" class="w-1/2 flex flex-col bg-slate-50 p-2.5 rounded-xl border border-slate-200 shadow-sm justify-start items-center text-center transition-all duration-300 opacity-50 grayscale scale-95">
-                    <div class="w-10 h-10 rounded-full bg-sky-500 text-white flex items-center justify-center mb-2 shadow-md">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                <div id="card-amiparenxyl" onclick="selectBrand('amiparenxyl')" class="cursor-pointer flex flex-col bg-slate-50 p-1.5 rounded-xl border border-slate-200 shadow-sm justify-start items-center text-center transition-all duration-300 opacity-50 grayscale scale-95 hover:bg-sky-50">
+                    <div class="w-8 h-8 rounded-full bg-sky-400 text-white flex items-center justify-center mb-1.5 shadow-md">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
                     </div>
-                    <span class="font-extrabold text-sky-900 text-[11px] uppercase tracking-wide">Амипаренксил</span>
-                    <div class="mt-1 text-[9px] text-sky-800 leading-tight font-medium">
-                        <span data-ru="Сбалансирован по белку и электролитам. Содержит ксилитол (инсулиннезависимый субстрат)." data-en="Balanced protein and lytes. Contains xylitol (insulin-independent substrate).">Сбалансирован по белку и электролитам. Содержит ксилитол (инсулиннезависимый субстрат).</span>
+                    <span class="font-extrabold text-sky-900 text-[9px] sm:text-[10px] leading-tight break-words w-full text-center">АМИПАРЕНКСИЛ</span>
+                    <div class="mt-1 text-[8px] sm:text-[9px] text-sky-800 leading-tight font-medium w-full text-center">
+                        <span data-ru="Ксилитол + Электролиты." data-en="Xylitol + Lytes.">Ксилитол + Электролиты.</span>
                     </div>
                 </div>
                 <!-- Амипарценин (Салатовая) -->
-                <div id="card-amiparcenin" class="w-1/2 flex flex-col bg-emerald-100 p-2.5 rounded-xl border-2 border-emerald-400 shadow-md justify-start items-center text-center transition-all duration-300 transform scale-105 z-10">
-                    <div class="w-10 h-10 rounded-full bg-emerald-500 text-white flex items-center justify-center mb-2 shadow-md">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
+                <div id="card-amiparcenin" onclick="selectBrand('amiparcenin')" class="cursor-pointer flex flex-col bg-emerald-50 p-1.5 rounded-xl border-2 border-emerald-400 shadow-md justify-start items-center text-center transition-all duration-300 transform scale-105 z-10 hover:bg-emerald-100">
+                    <div class="w-8 h-8 rounded-full bg-emerald-500 text-white flex items-center justify-center mb-1.5 shadow-md">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"></path></svg>
                     </div>
-                    <span class="font-extrabold text-emerald-900 text-[11px] uppercase tracking-wide">Амипарценин</span>
-                    <div class="mt-1 text-[9px] text-emerald-800 leading-tight font-medium">
-                        <span data-ru="Высокобелковый раствор в центральные вены. Идеален для коррекции глубокого дефицита." data-en="High-protein solution for central veins. Ideal for correcting severe deficit.">Высокобелковый раствор в центральные вены. Идеален для коррекции глубокого дефицита.</span>
+                    <span class="font-extrabold text-emerald-900 text-[9px] sm:text-[10px] leading-tight break-words w-full text-center">АМИПАРЦЕНИН</span>
+                    <div class="mt-1 text-[8px] sm:text-[9px] text-emerald-800 leading-tight font-medium w-full text-center">
+                        <span data-ru="10% белок в ЦВ." data-en="10% protein in CVC.">10% белок в ЦВ.</span>
+                    </div>
+                </div>
+                <!-- 3-в-1 (Фиолетовая) -->
+                <div id="card-3in1" onclick="selectBrand('3in1')" class="cursor-pointer flex flex-col bg-slate-50 p-1.5 rounded-xl border border-slate-200 shadow-sm justify-start items-center text-center transition-all duration-300 opacity-50 grayscale scale-95 hover:bg-purple-50">
+                    <div class="w-8 h-8 rounded-full bg-purple-500 text-white flex items-center justify-center mb-1.5 shadow-md">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 002-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+                    </div>
+                    <span class="font-extrabold text-purple-900 text-[9px] sm:text-[10px] leading-tight break-words w-full text-center">«ТРИ-В-ОДНОМ»</span>
+                    <div class="mt-1 text-[8px] sm:text-[9px] text-purple-800 leading-tight font-medium w-full text-center">
+                        <span data-ru="Смесь БЖУ." data-en="All-in-one PN.">Смесь БЖУ.</span>
                     </div>
                 </div>
             </div>
@@ -689,50 +703,84 @@
     <!-- TAB 4: МОНИТОРИНГ -->
     <div id="tab-monitor" class="tab-content px-4 py-5">
         
-        <div class="card border-l-4 border-l-teal-500">
+        <div class="card border-l-4 border-l-teal-500 mb-3">
             <h2 class="text-sm font-extrabold text-slate-800 mb-4 flex items-center uppercase tracking-wide">
                 <span data-ru="Азотистый Баланс" data-en="Nitrogen Balance">Азотистый Баланс</span>
             </h2>
             <div class="space-y-3 mb-4">
                 <div class="input-group !mb-0">
                     <label class="text-slate-500 text-[10px]" data-ru="Поступление белка с питанием (г/сут)" data-en="Protein intake with nutrition (g/day)">Поступление белка с питанием (г/сут)</label>
-                    <input type="number" id="nb-protein-in" value="100" class="border-slate-200" oninput="calculateAll()">
+                    <input type="number" id="nb-protein-in" placeholder="Напр. 80" class="border-slate-200" oninput="calculateNitrogenBalance()">
                 </div>
                 <div class="flex gap-2">
                     <div class="input-group !mb-0 w-1/2">
                         <label class="text-slate-500 text-[10px]" data-ru="Мочевина в сут. моче (ммоль/л)" data-en="Urine Urea (mmol/L)">Мочевина в сут. моче (ммоль/л)</label>
-                        <input type="number" id="nb-urine-urea" value="300" class="border-slate-200" oninput="calculateAll()">
+                        <input type="number" id="nb-urine-urea" placeholder="Напр. 250" class="border-slate-200" oninput="calculateNitrogenBalance()">
                     </div>
                     <div class="input-group !mb-0 w-1/2">
                         <label class="text-slate-500 text-[10px]" data-ru="Диурез (л/сут)" data-en="Diuresis (L/day)">Диурез (л/сут)</label>
-                        <input type="number" id="nb-diuresis" step="0.1" value="1.5" class="border-slate-200" oninput="calculateAll()">
+                        <input type="number" id="nb-diuresis" step="0.1" placeholder="Напр. 1.5" class="border-slate-200" oninput="calculateNitrogenBalance()">
                     </div>
                 </div>
                 <label class="flex items-center gap-3 p-2.5 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-100 cursor-pointer transition-colors shadow-inner">
-                    <input type="checkbox" id="nb-crrt" class="w-5 h-5 text-teal-600 rounded cursor-pointer" onchange="calculateAll()" checked>
+                    <input type="checkbox" id="nb-crrt" class="w-5 h-5 text-teal-600 rounded cursor-pointer" onchange="calculateNitrogenBalance()">
                     <span class="text-[11px] text-slate-700 font-bold leading-tight" data-ru="Потери в контуре ПЗПТ / Эфферон (+15 г белка к расходу)" data-en="CRRT / Efferon filter losses (+15g protein to output)">Потери в контуре ПЗПТ / Эфферон (+15 г белка к расходу)</span>
                 </label>
             </div>
             
-            <div class="bg-teal-50 p-4 rounded-xl border border-teal-100 shadow-sm">
+            <div id="nb-result-container" class="bg-teal-50 p-4 rounded-xl border border-teal-100 shadow-sm hidden mt-3">
                 <div class="flex justify-between text-xs text-teal-800 mb-1.5 font-medium">
                     <span data-ru="Приход (Азот из белка):" data-en="Intake (Nitrogen):">Приход (Азот из белка):</span>
-                    <span id="nb-in-val" class="font-bold">16.0 г</span>
+                    <span id="nb-in-val" class="font-bold"></span>
                 </div>
                 <div class="flex justify-between text-xs text-teal-800 mb-1.5 font-medium">
                     <span data-ru="Расход (UUN + Скрытые потери):" data-en="Output (UUN + Hidden):">Расход (UUN + Скрытые потери):</span>
-                    <span id="nb-out-val" class="font-bold">19.0 г</span>
+                    <span id="nb-out-val" class="font-bold"></span>
                 </div>
                 <div class="flex justify-between text-xs text-teal-800 mb-3 border-b border-teal-200 pb-2 font-medium">
                     <span data-ru="Уровень катаболизма:" data-en="Catabolism level:">Уровень катаболизма:</span>
-                    <span id="nb-catabolism-val" class="font-bold text-teal-900">Норма</span>
+                    <span id="nb-catabolism-val" class="font-bold text-teal-900"></span>
                 </div>
 
                 <div class="flex justify-between items-end mb-2">
                     <span class="text-[10px] font-extrabold text-teal-900 uppercase tracking-widest" data-ru="ИТОГОВЫЙ БАЛАНС:" data-en="FINAL BALANCE:">ИТОГОВЫЙ БАЛАНС:</span>
-                    <span id="nb-balance-val" class="text-3xl font-black text-red-500 tracking-tighter">-3.0 г</span>
+                    <span id="nb-balance-val" class="text-3xl font-black tracking-tighter"></span>
                 </div>
                 <div id="nb-recommendation" class="text-[11px] mt-2 leading-tight"></div>
+            </div>
+        </div>
+
+        <!-- БЛОК ОЦЕНКИ БЭН (БЕЛКОВО-ЭНЕРГЕТИЧЕСКАЯ НЕДОСТАТОЧНОСТЬ) -->
+        <div class="card border-l-4 border-l-purple-500 mb-3">
+            <h2 class="text-sm font-extrabold text-slate-800 mb-4 uppercase tracking-wide">
+                <span data-ru="Оценка БЭН (Лабораторная)" data-en="PEM Assessment (Lab)">Оценка БЭН (Лабораторная)</span>
+            </h2>
+            
+            <div class="grid grid-cols-2 gap-3 mb-2">
+                <div class="input-group !mb-0">
+                    <label class="text-slate-500 text-[10px]" data-ru="Общий белок (г/л)" data-en="Total Protein (g/L)">Общий белок (г/л)</label>
+                    <input type="number" id="ben-prot" class="border-slate-200" oninput="calculateBEN()" placeholder="65-85">
+                </div>
+                <div class="input-group !mb-0">
+                    <label class="text-slate-500 text-[10px]" data-ru="Альбумин (г/л)" data-en="Albumin (g/L)">Альбумин (г/л)</label>
+                    <input type="number" id="ben-alb" class="border-slate-200" oninput="calculateBEN()" placeholder="35-50">
+                </div>
+                <div class="input-group !mb-0">
+                    <label class="text-slate-500 text-[10px]" data-ru="Трансферрин (г/л)" data-en="Transferrin (g/L)">Трансферрин (г/л)</label>
+                    <input type="number" id="ben-transf" step="0.1" class="border-slate-200" oninput="calculateBEN()" placeholder="2.0-4.0">
+                </div>
+                <div class="input-group !mb-0">
+                    <label class="text-slate-500 text-[10px]" data-ru="Лимфоциты (в мкл)" data-en="Lymphocytes (/µL)">Лимфоциты (в мкл)</label>
+                    <input type="number" id="ben-lymph" class="border-slate-200" oninput="calculateBEN()" placeholder="> 1500">
+                </div>
+            </div>
+
+            <div id="ben-result-box" style="display: none;">
+                <div class="flex justify-between items-center mb-2">
+                    <span class="text-xs font-bold text-slate-500 uppercase tracking-widest" data-ru="Степень БЭН:" data-en="PEM Degree:">Степень БЭН:</span>
+                    <span id="ben-degree"></span>
+                </div>
+                <div id="ben-advice"></div>
             </div>
         </div>
 
@@ -860,7 +908,7 @@
             nrs_med: "Средний риск (1-2 балла).<br><b class='text-yellow-700'>Что делать:</b> Мониторинг (ежедневная оценка усвоенного объема ЭП, контроль веса). При ухудшении - старт НП.",
             nrs_low: "Низкий риск (0 баллов).<br><b class='text-green-700'>Что делать:</b> Повторный скрининг через 7 дней.",
             
-            nb_neg: "<b>Выраженный отрицательный баланс.</b> Повышение катаболизма. <br><span class='text-red-700 font-bold'>Критический дефицит белка-необходимо восполнять препаратом Амипарценин.</span>",
+            nb_neg: "<b>Выраженный отрицательный баланс.</b> Повышение катаболизма. <br><span class='text-red-700 font-bold'>Критический дефицит белка — необходимо восполнять парентерально.</span>",
             nb_pos: "<b>Выраженный положительный баланс.</b> Избыток поступления белка или задержка азота. Проверьте функцию почек.",
             nb_opt: "<b>Оптимальный баланс.</b> Достигнуто равновесие или легкий анаболизм. Продолжайте текущую терапию.",
             
@@ -881,7 +929,7 @@
             esmo_low: "<b>Низкий риск кахексии.</b><br><b class='text-green-700'>Что делать:</b> Стандартный мониторинг, переоценка через 1 месяц.",
 
             gi_full_pn: "<span class='text-red-600 font-bold'>ПОЛНОЕ ПП (0% ЭП).</span> Абсолютные противопоказания к энтеральному питанию. Показаны препараты линии Амипарен.",
-            gi_mixed: "<span class='text-yellow-600 font-bold'>СМЕШАННОЕ ПИТАНИЕ.</span> Функция ЖКТ снижена. Увеличьте долю ПП (Амипарценин/Амипаренксил).",
+            gi_mixed: "<span class='text-yellow-600 font-bold'>СМЕШАННОЕ ПИТАНИЕ.</span> Функция ЖКТ снижена. Увеличьте долю ПП.",
             gi_full_en: "<span class='text-green-600 font-bold'>ЭП В ПРИОРИТЕТЕ (100%).</span> ЖКТ функционирует, продолжайте энтеральное питание.",
             
             pn_target_prot: "Дефицит белка (для ПП):",
@@ -899,7 +947,7 @@
             nrs_med: "Medium risk (1-2 pts).<br><b class='text-yellow-700'>Action:</b> Monitoring (daily intake tracking, weight control). Start feeding if declines.",
             nrs_low: "Low risk (0 pts).<br><b class='text-green-700'>Action:</b> Rescreen in 7 days.",
             
-            nb_neg: "<b>Severe negative balance.</b> Increased catabolism. <br><span class='text-red-700 font-bold'>Critical protein deficit must be replenished with Amiparcenin.</span>",
+            nb_neg: "<b>Severe negative balance.</b> Increased catabolism. <br><span class='text-red-700 font-bold'>Critical protein deficit must be replenished parenterally.</span>",
             nb_pos: "<b>Strongly positive balance.</b> Excess protein intake or nitrogen retention. Check renal function.",
             nb_opt: "<b>Optimal balance.</b> Equilibrium or mild anabolism achieved. Continue therapy.",
             
@@ -919,7 +967,7 @@
             esmo_high: "<b>Cachexia Syndrome (High risk).</b><br><b class='text-red-700'>Action:</b> Early aggressive EN/PN, consider Omega-3.",
             esmo_low: "<b>Low cachexia risk.</b><br><b class='text-green-700'>Action:</b> Standard monitoring, reassess in 1 month.",
 
-            gi_full_pn: "<span class='text-red-600 font-bold'>TOTAL PN (0% EN).</span> Absolute contraindications to enteral feeding.",
+            gi_full_pn: "<span class='text-red-600 font-bold'>TOTAL PN (0% EN).</span> Absolute contraindications to enteral feeding. PN indicated.",
             gi_mixed: "<span class='text-yellow-600 font-bold'>SUPPLEMENTAL PN.</span> GI function compromised. Increase PN share.",
             gi_full_en: "<span class='text-green-600 font-bold'>EN IS PRIORITY (100%).</span> GI tract is functional, continue enteral nutrition.",
             
@@ -937,8 +985,8 @@
         ru: {
             general: { protRange: "1.2 - 1.5", protCalc: [1.2, 1.5], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4"><li><b>Алгоритм старта:</b> Начинать с 10-15 ккал/кг (≤50% от цели) в 1-2 сутки. Увеличивать на 5-10 ккал/кг каждые 24ч. Полный объем — к 4-7 дню.</li><li>Раннее ЭП (300 мл/сут или 10-20 мл/ч) в первые 24-48 ч для сохранения барьера ЖКТ. При недокорме - парентеральная коррекция.</li></ul>` },
             pneumonia: { protRange: "1.2 - 1.5", protCalc: [1.2, 1.5], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-blue-900"><li><b>Умеренный стресс:</b> потребность в энергии 25-30 ккал/кг.</li><li><b>Дыхательная недостаточность:</b> избегать перекорма углеводами (увеличивают продукцию CO2). Оптимизировать долю жировых эмульсий.</li></ul>` },
-            sepsis: { protRange: "1.3 - 2.0", protCalc: [1.3, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-blue-900"><li><b>Абдоминальный сепсис:</b> На фоне выраженного системного воспаления стандартное ЭП не покрывает потребности. Для снижения дисфункции органов (SOFA) показано раннее применение препарата <b>Амипарценин</b>.</li><li><b>Острая фаза:</b> Старт с трофического ЭП (10-15 ккал/кг). Дефицит белка восполнять внутривенно.</li></ul>` },
-            polytrauma: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-red-900"><li><b>Тяжелый гиперкатаболизм:</b> массивная потеря азота с мочой и экссудатами.</li><li>Показана интенсивная белковая дотация (<b>Амипарценин</b> в центральные вены).</li><li>Строгий контроль калия и фосфора при наращивании калорий (риск рефидинг-синдрома).</li></ul>` },
+            sepsis: { protRange: "1.3 - 2.0", protCalc: [1.3, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-blue-900"><li><b>Абдоминальный сепсис:</b> На фоне выраженного системного воспаления стандартное ЭП не покрывает потребности. Для снижения дисфункции органов (SOFA) показано раннее применение высокобелкового ПП (Амипарценин).</li><li><b>Острая фаза:</b> Старт с трофического ЭП (10-15 ккал/кг). Дефицит белка восполнять внутривенно.</li></ul>` },
+            polytrauma: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-red-900"><li><b>Тяжелый гиперкатаболизм:</b> массивная потеря азота с мочой и экссудатами.</li><li>Показана интенсивная белковая дотация (Амипарценин в центральные вены).</li><li>Строгий контроль калия и фосфора при наращивании калорий (риск рефидинг-синдрома).</li></ul>` },
             pancreatitis: { protRange: "1.2 - 1.5", protCalc: [1.2, 1.5], fatRange: "0.8 - 1.2", notes: `<ul class="list-disc pl-4 text-orange-900"><li><b>Тяжелый ОДП:</b> Назоинтестинальный зонд с первых часов. Парентеральное питание показано при непереносимости ЭП.</li><li><b>Глутамин в/в:</b> 2-4 мл/кг для профилактики инфицирования панкреонекроза.</li></ul>` },
             burns: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-orange-800"><li><b>Токсемия:</b> Энергия 30-40 ккал/кг. Высочайший катаболизм требует массивной белковой дотации.</li><li>Повышенная потеря микроэлементов с экссудатом (Cu, Se, Zn, Вит С).</li></ul>` },
             tbi: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-blue-900"><li>Выраженный гиперметаболизм (30-35 ккал/кг).</li><li><b>Контроль гликемии:</b> >10 ммоль/л усугубляет отек мозга.</li></ul>` },
@@ -1142,7 +1190,9 @@
     }
 
     function switchContraTab(tabId, btnElement) {
-        document.querySelectorAll('.contra-content').forEach(el => el.classList.add('hidden'));
+        document.querySelectorAll('.contra-content').forEach(el => {
+            el.classList.add('hidden');
+        });
         document.querySelectorAll('.contra-btn').forEach(el => {
             el.classList.remove('bg-white', 'text-red-600', 'shadow-sm');
             el.classList.add('text-slate-500');
@@ -1242,7 +1292,7 @@
                 alertBun.classList.remove('hidden');
                 if (bun > 10) {
                     alertBun.className = "mt-2 p-2 bg-yellow-100 text-yellow-900 rounded-lg border border-yellow-300 text-[11px] leading-tight font-medium shadow-sm";
-                    alertBun.innerHTML = (lang === 'ru') ? "⚠️ <b>> 10-15 ммоль/л:</b> Уменьшить белок до 0.8-1.0 г/кг (исключив гиповолемию).<br><span class='text-red-700 font-bold mt-1 block uppercase tracking-wide'>При ПЗПТ (Эфферон) квоту белка НЕ уменьшают!</span>" : "⚠️ <b>> 10-15 mmol/L:</b> Reduce protein to 0.8-1.0 g/kg (exclude hypovolemia).<br><span class='text-red-700 font-bold mt-1 block uppercase tracking-wide'>Do NOT reduce protein during CRRT!</span>";
+                    alertBun.innerHTML = (lang === 'ru') ? "⚠️ <b>> 10-15 ммоль/л:</b> Уменьшить белок до 0.8-1.0 г/кг (исключив гиповолемию).<br><span class='text-red-700 font-bold mt-1 block uppercase tracking-wide'>При ПЗПТ квоту белка НЕ уменьшают!</span>" : "⚠️ <b>> 10-15 mmol/L:</b> Reduce protein to 0.8-1.0 g/kg (exclude hypovolemia).<br><span class='text-red-700 font-bold mt-1 block uppercase tracking-wide'>Do NOT reduce protein during CRRT!</span>";
                 } else {
                     alertBun.className = "mt-2 p-2 bg-green-100 text-green-800 rounded-lg border border-green-200 text-[11px] leading-tight font-medium shadow-sm";
                     alertBun.innerHTML = (lang === 'ru') ? "✅ Норма." : "✅ Normal.";
@@ -1267,22 +1317,26 @@
         } else {
             safeSet('gi-recommendation', t('gi_full_en'));
         }
-
-        if (window.currentNitrogenBalance < -1) {
-            safeSetDisplay('gi-catabolism-alert', 'block');
-            safeSet('gi-catabolism-alert', (lang === 'ru') ? 
-                "⚠️ Внимание: При повышении катаболизма по азотистому балансу (выраженный отрицательный баланс) <br><span class='font-black uppercase text-[10px] tracking-wide mt-1 block'>Критический дефицит белка-необходимо восполнять парентерально (Амипарценин)!</span>" : 
-                "⚠️ Warning: With increased catabolism per nitrogen balance (severe negative balance) <br><span class='font-black uppercase text-[10px] tracking-wide mt-1 block'>Critical protein deficit must be replenished parenterally!</span>");
-        } else {
-            safeSetDisplay('gi-catabolism-alert', 'none');
-        }
     }
 
     function calculateNitrogenBalance() {
-        const proteinIn = parseFloat(document.getElementById('nb-protein-in')?.value) || 0;
-        const urineUreaMmolL = parseFloat(document.getElementById('nb-urine-urea')?.value) || 0;
-        const diuresis = parseFloat(document.getElementById('nb-diuresis')?.value) || 0;
+        const proteinInRaw = document.getElementById('nb-protein-in')?.value;
+        const urineUreaRaw = document.getElementById('nb-urine-urea')?.value;
+        const diuresisRaw = document.getElementById('nb-diuresis')?.value;
         const isCRRT = document.getElementById('nb-crrt')?.checked || false;
+
+        const resContainer = document.getElementById('nb-result-container');
+
+        if (!proteinInRaw || !urineUreaRaw || !diuresisRaw) {
+            if(resContainer) resContainer.classList.add('hidden');
+            window.currentNitrogenBalance = 0;
+            assessGI();
+            return;
+        }
+
+        const proteinIn = parseFloat(proteinInRaw);
+        const urineUreaMmolL = parseFloat(urineUreaRaw);
+        const diuresis = parseFloat(diuresisRaw);
 
         const nIn = proteinIn / 6.25;
         const uun = urineUreaMmolL * diuresis * 0.028;
@@ -1291,6 +1345,8 @@
 
         const balance = nIn - nOut;
         window.currentNitrogenBalance = balance; 
+
+        if(resContainer) resContainer.classList.remove('hidden');
 
         safeSet('nb-in-val', nIn.toFixed(1) + u('g'));
         safeSet('nb-out-val', nOut.toFixed(1) + u('g'));
@@ -1307,7 +1363,20 @@
         if (balance < -1) {
             safeSetClass('nb-balance-val', "text-3xl font-black text-red-500 tracking-tighter");
             safeSetClass('nb-recommendation', "text-[11px] mt-2 p-2 bg-red-100 text-red-800 rounded-lg border border-red-200 leading-tight font-medium shadow-sm");
-            safeSet('nb-recommendation', t('nb_neg'));
+            
+            let recText = t('nb_neg');
+            const isDM = document.getElementById('comorb-dm')?.checked;
+            const isHF = document.getElementById('comorb-hf')?.checked;
+            
+            if (isHF) {
+                recText += "<br><span class='text-blue-900 font-bold mt-1.5 block'>💡 При ограничении объема (ХСН) и энергии рекомендуется АМИПАРЦЕНИН.</span>";
+            } else if (isDM) {
+                recText += "<br><span class='text-blue-900 font-bold mt-1.5 block'>💡 При гипергликемии рекомендуется АМИПАРЕНКСИЛ.</span>";
+            } else {
+                recText += "<br><span class='text-blue-900 font-bold mt-1.5 block'>💡 Для коррекции рассмотрите Амипарценин или Амипаренксил.</span>";
+            }
+            safeSet('nb-recommendation', recText);
+
         } else if (balance > 4) {
             safeSetClass('nb-balance-val', "text-3xl font-black text-yellow-500 tracking-tighter");
             safeSetClass('nb-recommendation', "text-[11px] mt-2 p-2 bg-yellow-100 text-yellow-800 rounded-lg border border-yellow-200 leading-tight font-medium shadow-sm");
@@ -1354,6 +1423,14 @@
         if (!isNaN(actualVolume) && actualVolume > 0) {
             autoSetRatio(); 
         } else {
+            calculateAll();
+        }
+    }
+
+    function selectBrand(brandValue) {
+        const selectEl = document.getElementById('pn-type');
+        if (selectEl) {
+            selectEl.value = brandValue;
             calculateAll();
         }
     }
@@ -1463,21 +1540,34 @@
         const p = JSON.parse(JSON.stringify(protocols[lang][protocolKey]));
 
         let extraNotes = "";
+        let smartAlert = "";
+
         const isDM = document.getElementById('comorb-dm')?.checked;
         const isHF = document.getElementById('comorb-hf')?.checked;
         const isCKD = document.getElementById('comorb-ckd')?.checked;
 
         if (isDM) {
             extraNotes += "<li class='text-red-800'><b>СД / Стресс-гипергликемия:</b> Препарат выбора для парентеральной коррекции — <b>Амипаренксил</b> (ксилитол является инсулиннезависимым субстратом и не усугубляет гипергликемию). Жесткий контроль глюкозы (6-8 ммоль/л).</li>";
+            smartAlert += "⚠️ <b>СД / Гипергликемия:</b> Рекомендуется <b>АМИПАРЕНКСИЛ</b> (ксилитол не усугубляет гликемию).<br>";
         }
         if (isHF) {
             extraNotes += "<li class='text-blue-800'><b>ХСН:</b> Риск перегрузки объемом! Строгое ограничение жидкости (< 1.5 л/сут). Использовать концентрированные смеси (ЭП ≥ 1.5 ккал/мл, парентеральные АК 10-15%).</li>";
+            smartAlert += "⚠️ <b>ХСН (Ограничение жидкости):</b> Рекомендуется <b>АМИПАРЦЕНИН</b> для восполнения белка в минимальном объеме.<br>";
         }
         if (isCKD) {
             extraNotes += "<li class='text-amber-800'><b>ХБП:</b> Коррекция белка в зависимости от фазы и диализа. Тщательный контроль K, P, Mg.</li>";
         }
+        
         if (extraNotes) {
             p.notes += "<ul class='list-disc pl-4 mt-2 border-t border-slate-200 pt-2'>" + extraNotes + "</ul>";
+        }
+
+        const alertEl = document.getElementById('smart-comorb-alert');
+        if (smartAlert !== "") {
+            alertEl.innerHTML = smartAlert;
+            alertEl.classList.remove('hidden');
+        } else {
+            alertEl.classList.add('hidden');
         }
 
         safeSet('prot-range', p.protRange + " " + (lang === 'ru' ? "г/кг" : "g/kg"));
@@ -1516,19 +1606,29 @@
 
         const pnType = document.getElementById('pn-type')?.value || 'amiparcenin';
         
-        // Подсветка активной карточки препарата
         const cardXyl = document.getElementById('card-amiparenxyl');
         const cardCen = document.getElementById('card-amiparcenin');
+        const card3in1 = document.getElementById('card-3in1');
         
+        const activeClass = "cursor-pointer flex flex-col p-1.5 rounded-xl shadow-md justify-start items-center text-center transition-all duration-300 transform scale-105 z-10 border-2 ";
+        const inactiveClass = "cursor-pointer flex flex-col bg-slate-50 p-1.5 rounded-xl border border-slate-200 shadow-sm justify-start items-center text-center transition-all duration-300 opacity-50 grayscale scale-95 ";
+
         if (pnType === 'amiparenxyl') {
-            if(cardXyl) cardXyl.className = "w-1/2 flex flex-col bg-sky-50 p-2.5 rounded-xl border-2 border-sky-400 shadow-md justify-start items-center text-center transition-all duration-300 transform scale-105 z-10";
-            if(cardCen) cardCen.className = "w-1/2 flex flex-col bg-slate-50 p-2.5 rounded-xl border border-slate-200 shadow-sm justify-start items-center text-center transition-all duration-300 opacity-50 grayscale scale-95";
+            if(cardXyl) cardXyl.className = activeClass + "bg-sky-50 border-sky-400";
+            if(cardCen) cardCen.className = inactiveClass + "hover:bg-emerald-50";
+            if(card3in1) card3in1.className = inactiveClass + "hover:bg-purple-50";
         } else if (pnType === 'amiparcenin') {
-            if(cardCen) cardCen.className = "w-1/2 flex flex-col bg-emerald-50 p-2.5 rounded-xl border-2 border-emerald-400 shadow-md justify-start items-center text-center transition-all duration-300 transform scale-105 z-10";
-            if(cardXyl) cardXyl.className = "w-1/2 flex flex-col bg-slate-50 p-2.5 rounded-xl border border-slate-200 shadow-sm justify-start items-center text-center transition-all duration-300 opacity-50 grayscale scale-95";
+            if(cardCen) cardCen.className = activeClass + "bg-emerald-50 border-emerald-400";
+            if(cardXyl) cardXyl.className = inactiveClass + "hover:bg-sky-50";
+            if(card3in1) card3in1.className = inactiveClass + "hover:bg-purple-50";
+        } else if (pnType === '3in1') {
+            if(card3in1) card3in1.className = activeClass + "bg-purple-50 border-purple-400";
+            if(cardXyl) cardXyl.className = inactiveClass + "hover:bg-sky-50";
+            if(cardCen) cardCen.className = inactiveClass + "hover:bg-emerald-50";
         } else {
-            if(cardXyl) cardXyl.className = "w-1/2 flex flex-col bg-slate-50 p-2.5 rounded-xl border border-slate-200 shadow-sm justify-start items-center text-center transition-all duration-300 opacity-50 grayscale";
-            if(cardCen) cardCen.className = "w-1/2 flex flex-col bg-slate-50 p-2.5 rounded-xl border border-slate-200 shadow-sm justify-start items-center text-center transition-all duration-300 opacity-50 grayscale";
+            if(cardXyl) cardXyl.className = inactiveClass + "hover:bg-sky-50";
+            if(cardCen) cardCen.className = inactiveClass + "hover:bg-emerald-50";
+            if(card3in1) card3in1.className = inactiveClass + "hover:bg-purple-50";
         }
         
         let targetPnProt = protMax - enProt;
@@ -1549,25 +1649,29 @@
             safeSet('pn-vol-label', (lang === 'ru') ? 'Объем 3-в-1:' : '3-in-1 Volume:');
             safeSet('pn-vol', pnVol > 0 ? `~ ${pnVol}${u('ml_day')} (${Math.round((pnVol/100)*5)}${u('g')} белка)` : `0${u('ml_day')}`);
             
-            safeSetDisplay('pn-images', 'none');
-            safeSetDisplay('pn-aa-note', 'none');
             safeSetDisplay('energy-calc-box', 'none');
         } else {
-            const mlPerGram = 10; 
-            pnVol = targetPnProt * mlPerGram;
-            pnMaxAllowed = Math.round(calcWeight * 20); 
+            let mlPerGram = 10; 
+            if (pnType === 'amiparcenin') {
+                mlPerGram = 10; 
+            } else if (pnType === 'amiparenxyl') {
+                mlPerGram = 25; 
+            }
+            
+            pnVol = Math.round(targetPnProt * mlPerGram);
+            
+            pnMaxAllowed = Math.round(calcWeight * 40); 
+            if (pnType === 'amiparcenin') pnMaxAllowed = Math.round(calcWeight * 20); 
             
             let volLabel = (lang === 'ru') ? 'Объем раствора:' : 'Solution volume:';
-            if (pnType === 'amiparcenin') volLabel = (lang === 'ru') ? 'Объем Амипарценина:' : 'Amiparcenin Volume:';
-            if (pnType === 'amiparenxyl') volLabel = (lang === 'ru') ? 'Объем Амипаренксила:' : 'Amiparenxyl Volume:';
+            if (pnType === 'amiparcenin') volLabel = (lang === 'ru') ? 'Объем Амипарценина (10%):' : 'Amiparcenin Vol (10%):';
+            if (pnType === 'amiparenxyl') volLabel = (lang === 'ru') ? 'Объем Амипаренксила (~4%):' : 'Amiparenxyl Vol (~4%):';
             
             safeSet('pn-target-label', t('pn_target_prot'));
             safeSet('pn-target-prot', `${targetPnProt}${u('g')}`);
             safeSet('pn-vol-label', volLabel);
             safeSet('pn-vol', pnVol > 0 ? `~ ${pnVol}${u('ml_day')}` : `0${u('ml_day')}`);
             
-            safeSetDisplay('pn-images', 'flex');
-            safeSetDisplay('pn-aa-note', 'block');
             safeSetDisplay('energy-calc-box', 'block');
             
             let nonProtKcal = targetPnKcal - (targetPnProt * 4);
