@@ -8,7 +8,7 @@
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="apple-mobile-web-app-title" content="NutriCalc">
-    <title>ICU Nutri-Calculator</title>
+    <title>ICU Nutri-Calculator | Dr. Mendibaev</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = { darkMode: 'class', }
@@ -20,20 +20,46 @@
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; 
             background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%); 
             color: #334155; -webkit-font-smoothing: antialiased; 
-            margin: 0; padding: 0; height: 100vh; height: 100dvh; overflow: hidden; 
+            margin: 0; padding: 0; 
+            height: 100vh; height: 100dvh;
+            overflow: hidden; 
             display: flex; align-items: center; justify-content: center;
             overscroll-behavior-y: none; 
             -webkit-tap-highlight-color: transparent; 
         }
         
-        .app-container { width: 100%; max-width: 480px; height: 100%; background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); display: flex; flex-direction: column; position: relative; box-shadow: 0 0 40px rgba(0,0,0,0.05); }
+        .app-container { 
+            width: 100%; max-width: 480px; height: 100%; 
+            background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); 
+            display: flex; flex-direction: column; 
+            position: relative; box-shadow: 0 0 40px rgba(0,0,0,0.05); 
+        }
         @media (min-width: 640px) {
             .app-container { height: 90vh; max-height: 850px; border-radius: 2rem; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); border: 1px solid #e2e8f0; }
         }
 
-        .tab-content { display: none; flex-grow: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; padding-bottom: 120px; padding-top: 1rem; }
+        header { flex-shrink: 0; }
+
+        .tab-content { 
+            display: none; 
+            flex: 1; 
+            min-height: 0; 
+            overflow-y: auto; -webkit-overflow-scrolling: touch; 
+            padding-bottom: 120px; padding-top: 1rem; 
+        }
         .tab-content.active { display: block; animation: fadeIn 0.2s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(5px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .bottom-nav { 
+            flex-shrink: 0; 
+            background: rgba(255, 255, 255, 0.95); 
+            backdrop-filter: blur(12px); 
+            border-top: 1px solid #e2e8f0; 
+            display: flex; justify-content: space-around; 
+            padding-top: 0.5rem; 
+            padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px)); 
+            z-index: 50; 
+        }
         
         .input-group { margin-bottom: 0.875rem; }
         .input-group label { display: block; font-size: 0.75rem; font-weight: 700; color: #64748b; margin-bottom: 0.35rem; text-transform: uppercase; letter-spacing: 0.025em; }
@@ -65,7 +91,6 @@
         input[type=range]::-webkit-slider-runnable-track { width: 100%; height: 10px; cursor: pointer; background: linear-gradient(to right, #10b981, #3b82f6); border-radius: 5px; box-shadow: inset 0 1px 2px rgba(0,0,0,0.1); }
         input[type=range]:focus { outline: none; }
         
-        .bottom-nav { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(12px); border-top: 1px solid #e2e8f0; display: flex; justify-content: space-around; padding-top: 0.5rem; z-index: 50; padding-bottom: calc(0.5rem + env(safe-area-inset-bottom, 0px)); }
         .nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; width: 25%; color: #94a3b8; font-size: 0.65rem; font-weight: 700; background: none; border: none; outline: none; cursor: pointer; transition: all 0.2s; padding: 0.25rem; touch-action: manipulation;}
         .nav-item svg { width: 24px; height: 24px; margin-bottom: 4px; transition: all 0.2s; }
         .nav-item.active { color: #3b82f6; }
@@ -88,7 +113,7 @@
 <div class="hidden bg-pink-500 text-white"></div>
 
 <div class="app-container">
-    <header class="bg-white px-5 pt-8 pb-6 border-b border-slate-200 z-10 relative flex-shrink-0 shadow-sm">
+    <header class="bg-white px-5 pt-8 pb-6 border-b border-slate-200 z-10 relative shadow-sm">
         <div class="absolute top-4 right-4 bg-slate-100 rounded-lg p-1 flex shadow-inner">
             <button onclick="setLang('ru')" id="btn-ru" class="px-2.5 py-1 text-[10px] font-bold bg-white text-blue-600 rounded shadow-sm uppercase tracking-wide">RU</button>
             <button onclick="setLang('en')" id="btn-en" class="px-2.5 py-1 text-[10px] font-bold text-slate-400 hover:text-slate-600 uppercase tracking-wide">EN</button>
@@ -96,7 +121,8 @@
         
         <h1 class="text-2xl font-black text-slate-800 text-center tracking-tight mt-4 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-800 to-slate-500" data-ru="ICU Nutri-Calculator" data-en="ICU Nutri-Calculator">ICU Nutri-Calculator</h1>
         <p class="text-[10px] text-blue-600 font-extrabold uppercase tracking-widest text-center mt-1.5" data-ru="КАЛЬКУЛЯТОР НУТРИТИВНОЙ ПОДДЕРЖКИ" data-en="NUTRITIONAL SUPPORT CALCULATOR">КАЛЬКУЛЯТОР НУТРИТИВНОЙ ПОДДЕРЖКИ</p>
-        <p class="text-[10px] text-slate-400 font-medium text-center mt-2" data-ru="На базе актуальных клинических рекомендаций" data-en="Based on current clinical guidelines">На базе актуальных клинических рекомендаций</p>
+        <p class="text-[10px] text-slate-500 font-bold text-center mt-2 mb-0.5" data-ru="Автор: Макарий Мендибаев" data-en="Author: Makariy Mendibaev">Автор: Макарий Мендибаев</p>
+        <p class="text-[9px] text-slate-400 font-medium text-center" data-ru="makariy.mendibaev@yandex.ru" data-en="makariy.mendibaev@yandex.ru">makariy.mendibaev@yandex.ru</p>
     </header>
 
     <!-- TAB 1: ПАЦИЕНТ -->
@@ -134,7 +160,7 @@
             
             <div class="mt-4 pt-3 border-t border-slate-100 bg-slate-50 p-3 rounded-xl shadow-inner">
                 <div class="flex justify-between items-center mb-1">
-                    <span class="text-xs font-semibold text-slate-500 uppercase tracking-wide" data-ru="Идеальная масса (ИМТ):" data-en="Ideal Weight (IBW):">Идеальная масса (ИМТ):</span>
+                    <span class="text-xs font-semibold text-slate-500 uppercase tracking-wide" data-ru="Идеа масса (ИМТ):" data-en="Ideal Weight (IBW):">Идеальная масса (ИМТ):</span>
                     <span id="ibw-val" class="font-extrabold text-slate-800 text-sm">75 кг</span>
                 </div>
                 <div class="flex justify-between items-center" id="ajbw-row" style="display: none;">
@@ -521,7 +547,7 @@
 
             <!-- ИНТЕРАКТИВ КАЛЬКУЛЯТОР ФУНКЦИИ ЖКТ -->
             <div class="pt-4 border-t border-slate-200">
-                <h4 class="text-xs font-bold text-slate-800 mb-3 uppercase tracking-wide" data-ru="Оценка функции ЖКТ" data-en="GI Function Assessment">Оценка функции ЖКТ</h4>
+                <h4 class="text-xs font-bold text-slate-800 mb-3 uppercase tracking-wide" data-ru="Оценка функции ЖКТ (ESPEN)" data-en="GI Function Assessment (ESPEN)">Оценка функции ЖКТ (ESPEN)</h4>
                 
                 <div class="space-y-3 mb-4">
                     <div class="flex flex-col">
@@ -587,7 +613,7 @@
             </div>
         </div>
 
-        <!-- КАРТОЧКА ПАРЕНТЕРАЛЬНОГО ПИТАНИЯ (КОММЕРЧЕСКАЯ ВЕРСИЯ) -->
+        <!-- КАРТОЧКА ПАРЕНТЕРАЛЬНОГО ПИТАНИЯ (АКАДЕМИЧЕСКАЯ/КОММЕРЧЕСКАЯ) -->
         <div class="card border-l-4 border-l-blue-500">
             <h3 class="text-xs font-extrabold text-slate-500 mb-3 uppercase tracking-wide" data-ru="Парентеральное Питание (ПП)" data-en="Parenteral Nutrition (PN)">Парентеральное Питание (ПП)</h3>
             
@@ -878,12 +904,13 @@
 </div>
 
 <script>
+    let lang = 'ru';
+    let gender = 'male';
+    window.currentNitrogenBalance = 0;
+
+    // Глобальные функции перевода
     function t(key) { return tDict[lang][key] || key; }
     function u(key) { return tDict[lang].units[key] || ""; }
-
-    let gender = 'male';
-    let lang = 'ru';
-    window.currentNitrogenBalance = 0;
 
     function safeSet(id, text) {
         const el = document.getElementById(id);
@@ -985,19 +1012,19 @@
         ru: {
             general: { protRange: "1.2 - 1.5", protCalc: [1.2, 1.5], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4"><li><b>Алгоритм старта:</b> Начинать с 10-15 ккал/кг (≤50% от цели) в 1-2 сутки. Увеличивать на 5-10 ккал/кг каждые 24ч. Полный объем — к 4-7 дню.</li><li>Раннее ЭП (300 мл/сут или 10-20 мл/ч) в первые 24-48 ч для сохранения барьера ЖКТ. При недокорме - парентеральная коррекция.</li></ul>` },
             pneumonia: { protRange: "1.2 - 1.5", protCalc: [1.2, 1.5], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-blue-900"><li><b>Умеренный стресс:</b> потребность в энергии 25-30 ккал/кг.</li><li><b>Дыхательная недостаточность:</b> избегать перекорма углеводами (увеличивают продукцию CO2). Оптимизировать долю жировых эмульсий.</li></ul>` },
-            sepsis: { protRange: "1.3 - 2.0", protCalc: [1.3, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-blue-900"><li><b>Абдоминальный сепсис:</b> На фоне выраженного системного воспаления стандартное ЭП не покрывает потребности. Для снижения дисфункции органов (SOFA) показано раннее применение высокобелкового ПП.</li><li><b>Острая фаза:</b> Старт с трофического ЭП (10-15 ккал/кг). Дефицит белка восполнять внутривенно.</li></ul>` },
-            polytrauma: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-red-900"><li><b>Тяжелый гиперкатаболизм:</b> массивная потеря азота с мочой и экссудатами.</li><li>Показана интенсивная белковая дотация (высокобелковое ПП в центральные вены).</li><li>Строгий контроль калия и фосфора при наращивании калорий (риск рефидинг-синдрома).</li></ul>` },
+            sepsis: { protRange: "1.3 - 2.0", protCalc: [1.3, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-blue-900"><li><b>Абдоминальный сепсис:</b> На фоне выраженного системного воспаления стандартное ЭП не покрывает потребности. Для снижения дисфункции органов (SOFA) показано раннее применение высокобелкового ПП (Амипарценин).</li><li><b>Острая фаза:</b> Старт с трофического ЭП (10-15 ккал/кг). Дефицит белка восполнять внутривенно.</li></ul>` },
+            polytrauma: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-red-900"><li><b>Тяжелый гиперкатаболизм:</b> массивная потеря азота с мочой и экссудатами.</li><li>Показана интенсивная белковая дотация (Амипарценин в центральные вены).</li><li>Строгий контроль калия и фосфора при наращивании калорий (риск рефидинг-синдрома).</li></ul>` },
             pancreatitis: { protRange: "1.2 - 1.5", protCalc: [1.2, 1.5], fatRange: "0.8 - 1.2", notes: `<ul class="list-disc pl-4 text-orange-900"><li><b>Тяжелый ОДП:</b> Назоинтестинальный зонд с первых часов. Парентеральное питание показано при непереносимости ЭП.</li><li><b>Глутамин в/в:</b> 2-4 мл/кг для профилактики инфицирования панкреонекроза.</li></ul>` },
             burns: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-orange-800"><li><b>Токсемия:</b> Энергия 30-40 ккал/кг. Высочайший катаболизм требует массивной белковой дотации.</li><li>Повышенная потеря микроэлементов с экссудатом (Cu, Se, Zn, Вит С).</li></ul>` },
-            tbi: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-blue-900"><li>Выраженный гиперметаболизм (30-35 kcal/kg).</li><li><b>Контроль гликемии:</b> >10 ммоль/л усугубляет отек мозга.</li></ul>` },
-            gib: { protRange: "1.2 - 1.5", protCalc: [1.2, 1.5], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-red-900"><li><b>Острая фаза:</b> энтеральное питание откладывается до достижения надежного эндоскопического гемостаза (минимум на 24-48 ч).</li><li>При высоком риске рецидива и невозможности ЭП более 3 суток — обязателен старт парентерального питания.</li></ul>` },
+            tbi: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-blue-900"><li>Выраженный гиперметаболизм (30-35 ккал/кг).</li><li><b>Контроль гликемии:</b> >10 ммоль/л усугубляет отек мозга.</li></ul>` },
+            gib: { protRange: "1.2 - 1.5", protCalc: [1.2, 1.5], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-red-900"><li><b>Острая фаза:</b> энтеральное питание откладывается до достижения надежного эндоскопического гемостаза (минимум на 24-48 ч).</li><li>При высоком риске рецидива и невозможности ЭП более 3 суток — обязателен старт парентерального питания (Амипарценин).</li></ul>` },
             oncology: { protRange: "1.2 - 2.0", protCalc: [1.2, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-indigo-900"><li>Белок до 2.0 г/кг при выраженной кахексии.</li><li>При инсулинорезистентности: увеличение доли жиров, снижение углеводов.</li><li>Иммунное питание (Омега-3, Аргинин) рекомендовано за 5-7 дней до хирургии ЖКТ.</li></ul>` },
             cirrhosis: { protRange: "1.2 - 1.5", protCalc: [1.2, 1.5], fatRange: "1.0 - 1.2", notes: `<ul class="list-disc pl-4 text-yellow-900"><li><b>Важно:</b> Расчет вести на <b>сухой вес</b> (без учета асцита).</li><li>Необходим поздний вечерний перекус для предотвращения ночного катаболизма.</li></ul>` },
             sbs: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-emerald-900"><li>Энергия 30-40 ккал/кг/сут.</li><li>Основа ранней фазы — парентеральное питание.</li><li>Энтеральное: постепенный ввод олигомерных (пептидных) смесей.</li></ul>` },
             ckd_nodialysis: { protRange: "0.6 - 0.8", protCalc: [0.6, 0.8], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-gray-700"><li><b>Без диализа:</b> Ограничение белка для замедления прогрессирования ХБП.</li><li>Энергия: 30-35 ккал/кг для предотвращения белково-энергетической недостаточности.</li><li>Ограничение калия (K), натрия (Na), фосфора (P). Специализированные почечные смеси.</li></ul>` },
             aki_ihd: { protRange: "1.2 - 1.5", protCalc: [1.2, 1.5], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-teal-800"><li><b>Интермиттирующий диализ (ИГД):</b> Потери аминокислот ~10-15 г за сеанс.</li><li>Необходима компенсация белка и водорастворимых витаминов в дни диализа.</li></ul>` },
-            aki_crrt: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-blue-800"><li><b>ПЗПТ:</b> Клиренс нутриентов через мембраны диализаторов приводит к тяжелому гиперкатаболизму. Потери АК в фильтре достигают 15-20 г/сут.</li><li>Обязательна непрерывная компенсация (доза белка увеличена до 1.5-2.0 г/кг, рекомендовано высокобелковое ПП). Строго восполнять водорастворимые витамины.</li></ul>` },
-            obesity: { protRange: "2.0 (на ИМТ)", protCalc: [2.0, 2.0], fatRange: "0.8 - 1.0", notes: `<ul class="list-disc pl-4 text-pink-900"><li>Гипокалорийное питание с высоким белком.</li><li>Белок: 2.0 г/кг <b>идеальной</b> массы тела. Парентеральная коррекция показана при дефиците.</li><li>Тромбопрофилактика на общую (фактическую) массу.</li></ul>` },
+            aki_crrt: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-blue-800"><li><b>ПЗПТ:</b> Клиренс нутриентов через мембраны диализаторов приводит к тяжелому гиперкатаболизму. Потери АК в фильтре достигают 15-20 г/сут.</li><li>Обязательна непрерывная компенсация (доза белка увеличена до 1.5-2.0 г/кг, рекомендовано Амипарценин). Строго восполнять водорастворимые витамины.</li></ul>` },
+            obesity: { protRange: "2.0 (на ИМТ)", protCalc: [2.0, 2.0], fatRange: "0.8 - 1.0", notes: `<ul class="list-disc pl-4 text-pink-900"><li>Гипокалорийное питание с высоким белком.</li><li>Белок: 2.0 г/кг <b>идеальной</b> массы тела. Парентеральная коррекция (Амипарценин) показана при дефиците.</li><li>Тромбопрофилактика на общую (фактическую) массу.</li></ul>` },
             rehab: { protRange: "1.3 - 2.0", protCalc: [1.3, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-indigo-900"><li>Энергопотребность возрастает при кинезиотерапии.</li><li>Профилактика ПНМКС требует белка (не менее 1.3 г/кг) на фоне мышечной нагрузки.</li><li>Обязательный тест 3-х глотков на дисфагию перед началом перорального питания.</li></ul>` }
         },
         en: {
@@ -1022,7 +1049,6 @@
 
     function setLang(l) {
         lang = l;
-        
         safeSetClass('btn-ru', l === 'ru' ? "px-2.5 py-1 text-[10px] font-bold bg-white text-blue-600 rounded shadow-sm transition-all uppercase tracking-wide" : "px-2.5 py-1 text-[10px] font-bold text-slate-400 hover:text-slate-600 transition-all uppercase tracking-wide");
         safeSetClass('btn-en', l === 'en' ? "px-2.5 py-1 text-[10px] font-bold bg-white text-blue-600 rounded shadow-sm transition-all uppercase tracking-wide" : "px-2.5 py-1 text-[10px] font-bold text-slate-400 hover:text-slate-600 transition-all uppercase tracking-wide");
         
@@ -1122,70 +1148,6 @@
                 resEl.className = "mt-4 p-3 bg-green-50 border border-green-200 rounded-xl text-xs shadow-sm text-green-900";
                 resEl.innerHTML = t('esmo_low');
             }
-        }
-    }
-
-    function calculateBEN() {
-        const p = parseFloat(document.getElementById('ben-prot')?.value);
-        const a = parseFloat(document.getElementById('ben-alb')?.value);
-        const t_val = parseFloat(document.getElementById('ben-transf')?.value);
-        const l = parseFloat(document.getElementById('ben-lymph')?.value);
-
-        if (isNaN(p) && isNaN(a) && isNaN(t_val) && isNaN(l)) {
-            safeSetDisplay('ben-result-box', 'none');
-            return;
-        }
-
-        safeSetDisplay('ben-result-box', 'block');
-
-        let maxSev = 0; 
-        let reasons = [];
-
-        if (!isNaN(p)) {
-            if (p < 50) { maxSev = Math.max(maxSev, 3); reasons.push('критическое падение общего белка (<50)'); }
-            else if (p <= 54) maxSev = Math.max(maxSev, 2);
-            else if (p <= 59) maxSev = Math.max(maxSev, 1);
-        }
-        if (!isNaN(a)) {
-            if (a < 25) { maxSev = Math.max(maxSev, 3); reasons.push('опасное снижение альбумина (<25)'); }
-            else if (a <= 30) maxSev = Math.max(maxSev, 2);
-            else if (a <= 35) maxSev = Math.max(maxSev, 1);
-        }
-        if (!isNaN(t_val)) {
-            if (t_val < 1.25) { maxSev = Math.max(maxSev, 3); reasons.push('острый дефицит по трансферрину (<1.25)'); }
-            else if (t_val <= 1.8) maxSev = Math.max(maxSev, 2);
-            else if (t_val <= 2.0) maxSev = Math.max(maxSev, 1);
-        }
-        if (!isNaN(l)) {
-            if (l < 800) { maxSev = Math.max(maxSev, 3); reasons.push('алиментарный иммунодефицит (<800)'); }
-            else if (l <= 1000) maxSev = Math.max(maxSev, 2);
-            else if (l <= 1200) maxSev = Math.max(maxSev, 1);
-        }
-
-        const degreeEl = document.getElementById('ben-degree');
-        const adviceEl = document.getElementById('ben-advice');
-
-        if (maxSev === 3) {
-            safeSet('ben-degree', (lang==='ru') ? "Тяжелая" : "Severe");
-            safeSetClass('ben-degree', "text-lg font-black uppercase tracking-tighter text-red-600");
-            safeSetClass('ben-result-box', "bg-red-50 p-4 rounded-xl border border-red-200 mt-4 block shadow-sm");
-            let txt = (lang==='ru') ? `Высокий риск осложнений. Обнаружено: <b>${reasons.join(', ')}</b>. <br><br><b>Тактика:</b> Агрессивное восполнение белка (1.5–2.0 г/кг) и старт смешанного (ЭП+ПП) питания. Альбумин не устраняет дефицит!` : `High complication risk. <b>Action:</b> Aggressive protein repletion (1.5-2.0 g/kg) and mixed (EN+PN) feeding. Albumin doesn't fix malnutrition!`;
-            safeSet('ben-advice', txt);
-        } else if (maxSev === 2) {
-            safeSet('ben-degree', (lang==='ru') ? "Средняя" : "Moderate");
-            safeSetClass('ben-degree', "text-lg font-black uppercase tracking-tighter text-yellow-600");
-            safeSetClass('ben-result-box', "bg-yellow-50 p-4 rounded-xl border border-yellow-200 mt-4 block shadow-sm");
-            safeSet('ben-advice', (lang==='ru') ? "<b>Тактика:</b> Коррекция белковой квоты (до 1.5 г/кг) и мониторинг усвоения ЭП. При неэффективности — добавить ПП." : "<b>Action:</b> Correct protein quota (up to 1.5 g/kg). Add PN if EN is insufficient.");
-        } else if (maxSev === 1) {
-            safeSet('ben-degree', (lang==='ru') ? "Легкая" : "Mild");
-            safeSetClass('ben-degree', "text-lg font-black uppercase tracking-tighter text-green-600");
-            safeSetClass('ben-result-box', "bg-green-50 p-4 rounded-xl border border-green-200 mt-4 block shadow-sm");
-            safeSet('ben-advice', (lang==='ru') ? "<b>Тактика:</b> Оптимизация ЭП. Добавление сипинга по показаниям." : "<b>Action:</b> Optimize EN. ONS if indicated.");
-        } else {
-            safeSet('ben-degree', (lang==='ru') ? "Норма" : "Normal");
-            safeSetClass('ben-degree', "text-lg font-black uppercase tracking-tighter text-slate-600");
-            safeSetClass('ben-result-box', "bg-slate-50 p-4 rounded-xl border border-slate-200 mt-4 block shadow-sm");
-            safeSet('ben-advice', (lang==='ru') ? "Нутритивный статус сохранен. Продолжать терапию." : "Nutritional status preserved.");
         }
     }
 
@@ -1317,6 +1279,15 @@
         } else {
             safeSet('gi-recommendation', t('gi_full_en'));
         }
+
+        if (window.currentNitrogenBalance < -1) {
+            safeSetDisplay('gi-catabolism-alert', 'block');
+            safeSet('gi-catabolism-alert', (lang === 'ru') ? 
+                "⚠️ Внимание: При повышении катаболизма по азотистому балансу (выраженный отрицательный баланс) <br><span class='font-black uppercase text-[10px] tracking-wide mt-1 block'>Критический дефицит белка — необходимо восполнять парентерально (Амипарценин)!</span>" : 
+                "⚠️ Warning: With increased catabolism per nitrogen balance (severe negative balance) <br><span class='font-black uppercase text-[10px] tracking-wide mt-1 block'>Critical protein deficit must be replenished parenterally!</span>");
+        } else {
+            safeSetDisplay('gi-catabolism-alert', 'none');
+        }
     }
 
     function calculateNitrogenBalance() {
@@ -1390,38 +1361,102 @@
         assessGI();
     }
 
+    function calculateBEN() {
+        const p = parseFloat(document.getElementById('ben-prot')?.value);
+        const a = parseFloat(document.getElementById('ben-alb')?.value);
+        const t_val = parseFloat(document.getElementById('ben-transf')?.value);
+        const l = parseFloat(document.getElementById('ben-lymph')?.value);
+
+        if (isNaN(p) && isNaN(a) && isNaN(t_val) && isNaN(l)) {
+            safeSetDisplay('ben-result-box', 'none');
+            return;
+        }
+
+        safeSetDisplay('ben-result-box', 'block');
+
+        let maxSev = 0; 
+        let reasons = [];
+
+        if (!isNaN(p)) {
+            if (p < 50) { maxSev = Math.max(maxSev, 3); reasons.push('критическое падение общего белка (<50)'); }
+            else if (p <= 54) maxSev = Math.max(maxSev, 2);
+            else if (p <= 59) maxSev = Math.max(maxSev, 1);
+        }
+        if (!isNaN(a)) {
+            if (a < 25) { maxSev = Math.max(maxSev, 3); reasons.push('опасное снижение альбумина (<25)'); }
+            else if (a <= 30) maxSev = Math.max(maxSev, 2);
+            else if (a <= 35) maxSev = Math.max(maxSev, 1);
+        }
+        if (!isNaN(t_val)) {
+            if (t_val < 1.25) { maxSev = Math.max(maxSev, 3); reasons.push('острый дефицит по трансферрину (<1.25)'); }
+            else if (t_val <= 1.8) maxSev = Math.max(maxSev, 2);
+            else if (t_val <= 2.0) maxSev = Math.max(maxSev, 1);
+        }
+        if (!isNaN(l)) {
+            if (l < 800) { maxSev = Math.max(maxSev, 3); reasons.push('алиментарный иммунодефицит (<800)'); }
+            else if (l <= 1000) maxSev = Math.max(maxSev, 2);
+            else if (l <= 1200) maxSev = Math.max(maxSev, 1);
+        }
+
+        const degreeEl = document.getElementById('ben-degree');
+        const adviceEl = document.getElementById('ben-advice');
+
+        if (maxSev === 3) {
+            safeSet('ben-degree', (lang==='ru') ? "Тяжелая" : "Severe");
+            safeSetClass('ben-degree', "text-lg font-black uppercase tracking-tighter text-red-600");
+            safeSetClass('ben-result-box', "bg-red-50 p-4 rounded-xl border border-red-200 mt-4 block shadow-sm");
+            let txt = (lang==='ru') ? `Высокий риск осложнений. Обнаружено: <b>${reasons.join(', ')}</b>. <br><br><b>Тактика:</b> Агрессивное восполнение белка (1.5–2.0 г/кг) и старт смешанного (ЭП+ПП) питания. Альбумин не устраняет дефицит!` : `High complication risk. <b>Action:</b> Aggressive protein repletion (1.5-2.0 g/kg) and mixed (EN+PN) feeding. Albumin doesn't fix malnutrition!`;
+            safeSet('ben-advice', txt);
+        } else if (maxSev === 2) {
+            safeSet('ben-degree', (lang==='ru') ? "Средняя" : "Moderate");
+            safeSetClass('ben-degree', "text-lg font-black uppercase tracking-tighter text-yellow-600");
+            safeSetClass('ben-result-box', "bg-yellow-50 p-4 rounded-xl border border-yellow-200 mt-4 block shadow-sm");
+            safeSet('ben-advice', (lang==='ru') ? "<b>Тактика:</b> Коррекция белковой квоты (до 1.5 г/кг) и мониторинг усвоения ЭП. При неэффективности — добавить ПП." : "<b>Action:</b> Correct protein quota (up to 1.5 g/kg). Add PN if EN is insufficient.");
+        } else if (maxSev === 1) {
+            safeSet('ben-degree', (lang==='ru') ? "Легкая" : "Mild");
+            safeSetClass('ben-degree', "text-lg font-black uppercase tracking-tighter text-green-600");
+            safeSetClass('ben-result-box', "bg-green-50 p-4 rounded-xl border border-green-200 mt-4 block shadow-sm");
+            safeSet('ben-advice', (lang==='ru') ? "<b>Тактика:</b> Оптимизация ЭП. Добавление сипинга по показаниям." : "<b>Action:</b> Optimize EN. ONS if indicated.");
+        } else {
+            safeSet('ben-degree', (lang==='ru') ? "Норма" : "Normal");
+            safeSetClass('ben-degree', "text-lg font-black uppercase tracking-tighter text-slate-600");
+            safeSetClass('ben-result-box', "bg-slate-50 p-4 rounded-xl border border-slate-200 mt-4 block shadow-sm");
+            safeSet('ben-advice', (lang==='ru') ? "Нутритивный статус сохранен. Продолжать терапию." : "Nutritional status preserved.");
+        }
+    }
+
     function autoSetRatio() {
         const targetKcal = parseFloat(document.getElementById('auto-en-target')?.value) || 1;
         const actualVolume = parseFloat(document.getElementById('auto-en-actual')?.value) || 0;
-        
+
         const enTypeVal = document.getElementById('en-type')?.value || "1.0|4.0";
         const enKcalPerMl = parseFloat(enTypeVal.split('|')[0]);
         const actualKcal = actualVolume * enKcalPerMl;
-        
+
         let ratio = Math.round((actualKcal / targetKcal) * 100);
         if (ratio > 100) ratio = 100;
         if (ratio < 0) ratio = 0;
-        
+
         const slider = document.getElementById('en-ratio');
         if(slider) slider.value = ratio;
 
         const resultDiv = document.getElementById('auto-en-calc-result');
         if (resultDiv && actualVolume > 0) {
             resultDiv.classList.remove('hidden');
-            resultDiv.innerHTML = (lang === 'ru') ? 
-                `Покрыто смесями: ${Math.round(actualKcal)} ккал (${ratio}% цели)` : 
+            resultDiv.innerHTML = (lang === 'ru') ?
+                `Покрыто смесями: ${Math.round(actualKcal)} ккал (${ratio}% цели)` :
                 `Covered by formula: ${Math.round(actualKcal)} kcal (${ratio}% target)`;
         } else if (resultDiv) {
             resultDiv.classList.add('hidden');
         }
-        
+
         calculateAll();
     }
 
     function updateAutoRatioFromDropdown() {
         const actualVolume = parseFloat(document.getElementById('auto-en-actual')?.value);
         if (!isNaN(actualVolume) && actualVolume > 0) {
-            autoSetRatio(); 
+            autoSetRatio();
         } else {
             calculateAll();
         }
@@ -1484,9 +1519,6 @@
         const nrsBmiEl = document.getElementById('nrs-bmi');
         if (nrsBmiEl) nrsBmiEl.checked = (bmi > 0 && bmi < 20.5);
 
-        const rsBmiEl = document.getElementById('rs-bmi');
-        if (rsBmiEl) rsBmiEl.checked = (bmi > 0 && bmi < 16);
-
         let bmr = 0;
         if (gender === 'male') {
             bmr = 66.5 + (13.7 * calcWeight) + (5 * height) - (6.8 * age);
@@ -1519,13 +1551,6 @@
         updateProtocolAndMeds(calcWeight, aee, bmi, ibw);
         
         runScreening();
-        
-        const rs1 = document.getElementById('rs-bmi')?.checked || false;
-        const rs2 = document.getElementById('rs-weightloss')?.checked || false;
-        const rs3 = document.getElementById('rs-fasting')?.checked || false;
-        const rs4 = document.getElementById('rs-lytes')?.checked || false;
-        safeSetDisplay('rs-tactics', (rs1 || rs2 || rs3 || rs4) ? 'block' : 'none');
-        
         calculateBEN();
         checkMetabolism();
         calculateNitrogenBalance();
@@ -1563,11 +1588,13 @@
         }
 
         const alertEl = document.getElementById('smart-comorb-alert');
-        if (smartAlert !== "") {
-            alertEl.innerHTML = smartAlert;
-            alertEl.classList.remove('hidden');
-        } else {
-            alertEl.classList.add('hidden');
+        if (alertEl) {
+            if (smartAlert !== "") {
+                alertEl.innerHTML = smartAlert;
+                alertEl.classList.remove('hidden');
+            } else {
+                alertEl.classList.add('hidden');
+            }
         }
 
         safeSet('prot-range', p.protRange + " " + (lang === 'ru' ? "г/кг" : "g/kg"));
