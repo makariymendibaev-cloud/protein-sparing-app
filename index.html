@@ -113,7 +113,7 @@
 <div class="hidden bg-pink-500 text-white"></div>
 
 <div class="app-container">
-    <header class="bg-white px-5 pt-8 pb-6 border-b border-slate-200 z-10 relative shadow-sm">
+    <header class="bg-white px-5 pt-8 pb-4 border-b border-slate-200 z-10 relative shadow-sm">
         <div class="absolute top-4 right-4 bg-slate-100 rounded-lg p-1 flex shadow-inner">
             <button onclick="setLang('ru')" id="btn-ru" class="px-2.5 py-1 text-[10px] font-bold bg-white text-blue-600 rounded shadow-sm uppercase tracking-wide">RU</button>
             <button onclick="setLang('en')" id="btn-en" class="px-2.5 py-1 text-[10px] font-bold text-slate-400 hover:text-slate-600 uppercase tracking-wide">EN</button>
@@ -122,7 +122,9 @@
         <h1 class="text-2xl font-black text-slate-800 text-center tracking-tight mt-4 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-slate-800 to-slate-500" data-ru="ICU Nutri-Calculator" data-en="ICU Nutri-Calculator">ICU Nutri-Calculator</h1>
         <p class="text-[10px] text-blue-600 font-extrabold uppercase tracking-widest text-center mt-1.5" data-ru="КАЛЬКУЛЯТОР НУТРИТИВНОЙ ПОДДЕРЖКИ" data-en="NUTRITIONAL SUPPORT CALCULATOR">КАЛЬКУЛЯТОР НУТРИТИВНОЙ ПОДДЕРЖКИ</p>
         <p class="text-[10px] text-slate-500 font-bold text-center mt-2 mb-0.5" data-ru="Автор: Макарий Мендибаев" data-en="Author: Makariy Mendibaev">Автор: Макарий Мендибаев</p>
-        <p class="text-[9px] text-slate-400 font-medium text-center" data-ru="makariy.mendibaev@yandex.ru" data-en="makariy.mendibaev@yandex.ru">makariy.mendibaev@yandex.ru</p>
+        
+        <!-- Кликабельная ссылка на почту -->
+        <a href="mailto:makariy.mendibaev@yandex.ru" class="block text-[10px] text-blue-500 hover:text-blue-700 font-medium text-center transition-colors mb-2" data-ru="✉️ makariy.mendibaev@yandex.ru" data-en="✉️ makariy.mendibaev@yandex.ru">✉️ makariy.mendibaev@yandex.ru</a>
     </header>
 
     <!-- TAB 1: ПАЦИЕНТ -->
@@ -160,7 +162,7 @@
             
             <div class="mt-4 pt-3 border-t border-slate-100 bg-slate-50 p-3 rounded-xl shadow-inner">
                 <div class="flex justify-between items-center mb-1">
-                    <span class="text-xs font-semibold text-slate-500 uppercase tracking-wide" data-ru="Идеа масса (ИМТ):" data-en="Ideal Weight (IBW):">Идеальная масса (ИМТ):</span>
+                    <span class="text-xs font-semibold text-slate-500 uppercase tracking-wide" data-ru="Идеальная масса (ИМТ):" data-en="Ideal Weight (IBW):">Идеальная масса (ИМТ):</span>
                     <span id="ibw-val" class="font-extrabold text-slate-800 text-sm">75 кг</span>
                 </div>
                 <div class="flex justify-between items-center" id="ajbw-row" style="display: none;">
@@ -282,6 +284,11 @@
             
             <div id="screen-result" class="mt-4 p-3 bg-slate-50 border border-slate-200 rounded-xl text-xs shadow-sm"></div>
         </div>
+        
+        <!-- Медицинский дисклеймер (Внизу вкладки) -->
+        <div class="mx-4 mt-6 mb-2 p-3 bg-yellow-50 rounded-xl border border-yellow-200 shadow-sm">
+            <p class="text-[9px] leading-relaxed text-yellow-800 text-center font-medium" data-ru="⚠️ ВНИМАНИЕ: Калькулятор носит исключительно справочный характер. Результаты расчетов требуют клинической верификации лечащим врачом." data-en="⚠️ DISCLAIMER: For informational purposes only. Calculation results require clinical verification by a physician.">⚠️ ВНИМАНИЕ: Калькулятор носит исключительно справочный характер. Результаты расчетов требуют клинической верификации лечащим врачом.</p>
+        </div>
     </div>
 
     <!-- TAB 2: ЭНЕРГИЯ -->
@@ -386,6 +393,11 @@
                 <span class="text-green-800 font-bold text-sm uppercase" id="aee-unit" data-ru="ккал/сут" data-en="kcal/d">ккал/сут</span>
             </div>
             <div id="aee-per-kg" class="inline-block bg-white px-2.5 py-1 rounded-md text-xs font-bold text-green-700 shadow-sm border border-green-100 mb-2">~ 0 ккал/кг</div>
+        </div>
+        
+        <!-- Медицинский дисклеймер (Внизу вкладки) -->
+        <div class="mx-4 mt-6 mb-2 p-3 bg-yellow-50 rounded-xl border border-yellow-200 shadow-sm">
+            <p class="text-[9px] leading-relaxed text-yellow-800 text-center font-medium" data-ru="⚠️ ВНИМАНИЕ: Калькулятор носит исключительно справочный характер. Результаты расчетов требуют клинической верификации лечащим врачом." data-en="⚠️ DISCLAIMER: For informational purposes only. Calculation results require clinical verification by a physician.">⚠️ ВНИМАНИЕ: Калькулятор носит исключительно справочный характер. Результаты расчетов требуют клинической верификации лечащим врачом.</p>
         </div>
     </div>
 
@@ -547,7 +559,7 @@
 
             <!-- ИНТЕРАКТИВ КАЛЬКУЛЯТОР ФУНКЦИИ ЖКТ -->
             <div class="pt-4 border-t border-slate-200">
-                <h4 class="text-xs font-bold text-slate-800 mb-3 uppercase tracking-wide" data-ru="Оценка функции ЖКТ (ESPEN)" data-en="GI Function Assessment (ESPEN)">Оценка функции ЖКТ (ESPEN)</h4>
+                <h4 class="text-xs font-bold text-slate-800 mb-3 uppercase tracking-wide" data-ru="Оценка функции ЖКТ" data-en="GI Function Assessment">Оценка функции ЖКТ</h4>
                 
                 <div class="space-y-3 mb-4">
                     <div class="flex flex-col">
@@ -613,7 +625,7 @@
             </div>
         </div>
 
-        <!-- КАРТОЧКА ПАРЕНТЕРАЛЬНОГО ПИТАНИЯ (АКАДЕМИЧЕСКАЯ/КОММЕРЧЕСКАЯ) -->
+        <!-- КАРТОЧКА ПАРЕНТЕРАЛЬНОГО ПИТАНИЯ (КОММЕРЧЕСКАЯ ВЕРСИЯ) -->
         <div class="card border-l-4 border-l-blue-500">
             <h3 class="text-xs font-extrabold text-slate-500 mb-3 uppercase tracking-wide" data-ru="Парентеральное Питание (ПП)" data-en="Parenteral Nutrition (PN)">Парентеральное Питание (ПП)</h3>
             
@@ -677,8 +689,31 @@
                 </div>
             </div>
 
+            <!-- ПРОПОФОЛ (Вынесен из блока жиров, чтобы работать и для 3-в-1) -->
+            <div id="propofol-box" class="mt-4 pt-4 border-t border-slate-100">
+                <div class="border border-slate-200 rounded-xl p-2.5 bg-purple-50/50">
+                    <label class="flex items-center gap-3 cursor-pointer">
+                        <input type="checkbox" id="has-propofol" onchange="togglePropofol()" class="w-5 h-5 text-purple-600 rounded cursor-pointer">
+                        <span class="text-xs font-bold text-slate-700 leading-tight" data-ru="Седация Пропофолом (1%)" data-en="Propofol Sedation (1%)">Седация Пропофолом (1%)</span>
+                    </label>
+                    <div id="propofol-input-box" class="hidden mt-2 pt-2 border-t border-purple-100 flex-col gap-2 pl-8">
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] font-medium text-slate-600" data-ru="Скорость (мл/ч):" data-en="Rate (ml/h):">Скорость (мл/ч):</span>
+                            <input type="number" id="propofol-rate" oninput="calculateAll()" class="w-16 text-xs p-1.5 border border-slate-300 rounded outline-none focus:border-purple-400" placeholder="0" min="0">
+                        </div>
+                        <div id="propofol-info" class="hidden justify-between items-center text-xs mt-1">
+                            <span class="text-purple-600 font-medium" data-ru="Энергия/Жиры:" data-en="Energy/Fat:">Энергия/Жиры:</span>
+                            <span id="propofol-info-text" class="font-bold text-purple-800">0 ккал</span>
+                        </div>
+                        <div id="propofol-alert" class="hidden mt-1 p-1.5 bg-red-100 text-red-800 text-[10px] rounded-lg leading-tight font-medium shadow-sm" data-ru="⚠️ Риск PRIS и гипертриглицеридемии! Липиды в ПП снижены. Контроль ТГ сыворотки!" data-en="⚠️ PRIS & hypertriglyceridemia risk! PN lipids restricted. Monitor serum TG!">
+                            ⚠️ Риск PRIS и гипертриглицеридемии! Липиды в ПП снижены. Контроль ТГ сыворотки!
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <!-- КАЛЬКУЛЯТОР ЖИРОВ И ГЛЮКОЗЫ -->
-            <div id="energy-calc-box" class="mt-4 pt-4 border-t border-slate-100" style="display: none;">
+            <div id="energy-calc-box" class="mt-3 pt-3 border-t border-slate-100" style="display: none;">
                 <h4 class="text-xs font-extrabold text-slate-700 mb-3 uppercase tracking-wide" data-ru="Восполнение энергии (Жиры/Углеводы)" data-en="Energy coverage (Lipids/Carbs)">Восполнение энергии (Жиры/Углеводы)</h4>
                 
                 <div class="flex justify-between items-center text-xs mb-3 bg-slate-50 p-2 rounded-lg">
@@ -723,6 +758,11 @@
             <h3 class="text-xs font-bold text-slate-500 mb-2 uppercase tracking-widest" data-ru="Протокол нозологии" data-en="Pathology Notes">Протокол нозологии</h3>
             <div id="protocol-notes" class="text-xs text-slate-700 space-y-1.5 leading-relaxed font-medium">
             </div>
+        </div>
+        
+        <!-- Медицинский дисклеймер (Внизу вкладки) -->
+        <div class="mx-4 mt-6 mb-2 p-3 bg-yellow-50 rounded-xl border border-yellow-200 shadow-sm">
+            <p class="text-[9px] leading-relaxed text-yellow-800 text-center font-medium" data-ru="⚠️ ВНИМАНИЕ: Калькулятор носит исключительно справочный характер. Результаты расчетов требуют клинической верификации лечащим врачом." data-en="⚠️ DISCLAIMER: For informational purposes only. Calculation results require clinical verification by a physician.">⚠️ ВНИМАНИЕ: Калькулятор носит исключительно справочный характер. Результаты расчетов требуют клинической верификации лечащим врачом.</p>
         </div>
     </div>
 
@@ -880,6 +920,11 @@
                 </div>
             </div>
         </div>
+        
+        <!-- Медицинский дисклеймер (Внизу вкладки) -->
+        <div class="mx-4 mt-6 mb-2 p-3 bg-yellow-50 rounded-xl border border-yellow-200 shadow-sm">
+            <p class="text-[9px] leading-relaxed text-yellow-800 text-center font-medium" data-ru="⚠️ ВНИМАНИЕ: Калькулятор носит исключительно справочный характер. Результаты расчетов требуют клинической верификации лечащим врачом." data-en="⚠️ DISCLAIMER: For informational purposes only. Calculation results require clinical verification by a physician.">⚠️ ВНИМАНИЕ: Калькулятор носит исключительно справочный характер. Результаты расчетов требуют клинической верификации лечащим врачом.</p>
+        </div>
     </div>
 
     <!-- Bottom Navigation -->
@@ -908,7 +953,6 @@
     let gender = 'male';
     window.currentNitrogenBalance = 0;
 
-    // Глобальные функции перевода
     function t(key) { return tDict[lang][key] || key; }
     function u(key) { return tDict[lang].units[key] || ""; }
 
@@ -1012,19 +1056,19 @@
         ru: {
             general: { protRange: "1.2 - 1.5", protCalc: [1.2, 1.5], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4"><li><b>Алгоритм старта:</b> Начинать с 10-15 ккал/кг (≤50% от цели) в 1-2 сутки. Увеличивать на 5-10 ккал/кг каждые 24ч. Полный объем — к 4-7 дню.</li><li>Раннее ЭП (300 мл/сут или 10-20 мл/ч) в первые 24-48 ч для сохранения барьера ЖКТ. При недокорме - парентеральная коррекция.</li></ul>` },
             pneumonia: { protRange: "1.2 - 1.5", protCalc: [1.2, 1.5], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-blue-900"><li><b>Умеренный стресс:</b> потребность в энергии 25-30 ккал/кг.</li><li><b>Дыхательная недостаточность:</b> избегать перекорма углеводами (увеличивают продукцию CO2). Оптимизировать долю жировых эмульсий.</li></ul>` },
-            sepsis: { protRange: "1.3 - 2.0", protCalc: [1.3, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-blue-900"><li><b>Абдоминальный сепсис:</b> На фоне выраженного системного воспаления стандартное ЭП не покрывает потребности. Для снижения дисфункции органов (SOFA) показано раннее применение высокобелкового ПП (Амипарценин).</li><li><b>Острая фаза:</b> Старт с трофического ЭП (10-15 ккал/кг). Дефицит белка восполнять внутривенно.</li></ul>` },
-            polytrauma: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-red-900"><li><b>Тяжелый гиперкатаболизм:</b> массивная потеря азота с мочой и экссудатами.</li><li>Показана интенсивная белковая дотация (Амипарценин в центральные вены).</li><li>Строгий контроль калия и фосфора при наращивании калорий (риск рефидинг-синдрома).</li></ul>` },
+            sepsis: { protRange: "1.3 - 2.0", protCalc: [1.3, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-blue-900"><li><b>Абдоминальный сепсис:</b> На фоне выраженного системного воспаления стандартное ЭП не покрывает потребности. Для снижения дисфункции органов (SOFA) показано раннее применение высокобелкового ПП.</li><li><b>Острая фаза:</b> Старт с трофического ЭП (10-15 ккал/кг). Дефицит белка восполнять внутривенно.</li></ul>` },
+            polytrauma: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-red-900"><li><b>Тяжелый гиперкатаболизм:</b> массивная потеря азота с мочой и экссудатами.</li><li>Показана интенсивная белковая дотация (высокобелковое ПП в центральные вены).</li><li>Строгий контроль калия и фосфора при наращивании калорий (риск рефидинг-синдрома).</li></ul>` },
             pancreatitis: { protRange: "1.2 - 1.5", protCalc: [1.2, 1.5], fatRange: "0.8 - 1.2", notes: `<ul class="list-disc pl-4 text-orange-900"><li><b>Тяжелый ОДП:</b> Назоинтестинальный зонд с первых часов. Парентеральное питание показано при непереносимости ЭП.</li><li><b>Глутамин в/в:</b> 2-4 мл/кг для профилактики инфицирования панкреонекроза.</li></ul>` },
             burns: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-orange-800"><li><b>Токсемия:</b> Энергия 30-40 ккал/кг. Высочайший катаболизм требует массивной белковой дотации.</li><li>Повышенная потеря микроэлементов с экссудатом (Cu, Se, Zn, Вит С).</li></ul>` },
             tbi: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-blue-900"><li>Выраженный гиперметаболизм (30-35 ккал/кг).</li><li><b>Контроль гликемии:</b> >10 ммоль/л усугубляет отек мозга.</li></ul>` },
-            gib: { protRange: "1.2 - 1.5", protCalc: [1.2, 1.5], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-red-900"><li><b>Острая фаза:</b> энтеральное питание откладывается до достижения надежного эндоскопического гемостаза (минимум на 24-48 ч).</li><li>При высоком риске рецидива и невозможности ЭП более 3 суток — обязателен старт парентерального питания (Амипарценин).</li></ul>` },
+            gib: { protRange: "1.2 - 1.5", protCalc: [1.2, 1.5], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-red-900"><li><b>Острая фаза:</b> энтеральное питание откладывается до достижения надежного эндоскопического гемостаза (минимум на 24-48 ч).</li><li>При высоком риске рецидива и невозможности ЭП более 3 суток — обязателен старт парентерального питания.</li></ul>` },
             oncology: { protRange: "1.2 - 2.0", protCalc: [1.2, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-indigo-900"><li>Белок до 2.0 г/кг при выраженной кахексии.</li><li>При инсулинорезистентности: увеличение доли жиров, снижение углеводов.</li><li>Иммунное питание (Омега-3, Аргинин) рекомендовано за 5-7 дней до хирургии ЖКТ.</li></ul>` },
             cirrhosis: { protRange: "1.2 - 1.5", protCalc: [1.2, 1.5], fatRange: "1.0 - 1.2", notes: `<ul class="list-disc pl-4 text-yellow-900"><li><b>Важно:</b> Расчет вести на <b>сухой вес</b> (без учета асцита).</li><li>Необходим поздний вечерний перекус для предотвращения ночного катаболизма.</li></ul>` },
             sbs: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-emerald-900"><li>Энергия 30-40 ккал/кг/сут.</li><li>Основа ранней фазы — парентеральное питание.</li><li>Энтеральное: постепенный ввод олигомерных (пептидных) смесей.</li></ul>` },
             ckd_nodialysis: { protRange: "0.6 - 0.8", protCalc: [0.6, 0.8], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-gray-700"><li><b>Без диализа:</b> Ограничение белка для замедления прогрессирования ХБП.</li><li>Энергия: 30-35 ккал/кг для предотвращения белково-энергетической недостаточности.</li><li>Ограничение калия (K), натрия (Na), фосфора (P). Специализированные почечные смеси.</li></ul>` },
             aki_ihd: { protRange: "1.2 - 1.5", protCalc: [1.2, 1.5], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-teal-800"><li><b>Интермиттирующий диализ (ИГД):</b> Потери аминокислот ~10-15 г за сеанс.</li><li>Необходима компенсация белка и водорастворимых витаминов в дни диализа.</li></ul>` },
-            aki_crrt: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-blue-800"><li><b>ПЗПТ:</b> Клиренс нутриентов через мембраны диализаторов приводит к тяжелому гиперкатаболизму. Потери АК в фильтре достигают 15-20 г/сут.</li><li>Обязательна непрерывная компенсация (доза белка увеличена до 1.5-2.0 г/кг, рекомендовано Амипарценин). Строго восполнять водорастворимые витамины.</li></ul>` },
-            obesity: { protRange: "2.0 (на ИМТ)", protCalc: [2.0, 2.0], fatRange: "0.8 - 1.0", notes: `<ul class="list-disc pl-4 text-pink-900"><li>Гипокалорийное питание с высоким белком.</li><li>Белок: 2.0 г/кг <b>идеальной</b> массы тела. Парентеральная коррекция (Амипарценин) показана при дефиците.</li><li>Тромбопрофилактика на общую (фактическую) массу.</li></ul>` },
+            aki_crrt: { protRange: "1.5 - 2.0", protCalc: [1.5, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-blue-800"><li><b>ПЗПТ:</b> Клиренс нутриентов через мембраны диализаторов приводит к тяжелому гиперкатаболизму. Потери АК в фильтре достигают 15-20 г/сут.</li><li>Обязательна непрерывная компенсация (доза белка увеличена до 1.5-2.0 г/кг, рекомендовано высокобелковое ПП). Строго восполнять водорастворимые витамины.</li></ul>` },
+            obesity: { protRange: "2.0 (на ИМТ)", protCalc: [2.0, 2.0], fatRange: "0.8 - 1.0", notes: `<ul class="list-disc pl-4 text-pink-900"><li>Гипокалорийное питание с высоким белком.</li><li>Белок: 2.0 г/кг <b>идеальной</b> массы тела. Парентеральная коррекция показана при дефиците.</li><li>Тромбопрофилактика на общую (фактическую) массу.</li></ul>` },
             rehab: { protRange: "1.3 - 2.0", protCalc: [1.3, 2.0], fatRange: "1.0 - 1.5", notes: `<ul class="list-disc pl-4 text-indigo-900"><li>Энергопотребность возрастает при кинезиотерапии.</li><li>Профилактика ПНМКС требует белка (не менее 1.3 г/кг) на фоне мышечной нагрузки.</li><li>Обязательный тест 3-х глотков на дисфагию перед началом перорального питания.</li></ul>` }
         },
         en: {
@@ -1174,6 +1218,23 @@
         } else {
             safeSetDisplay('preop-block', 'none');
         }
+    }
+
+    function togglePropofol() {
+        const isChecked = document.getElementById('has-propofol')?.checked;
+        const box = document.getElementById('propofol-input-box');
+        if (box) {
+            if (isChecked) {
+                box.classList.remove('hidden');
+                box.classList.add('flex');
+            } else {
+                box.classList.add('hidden');
+                box.classList.remove('flex');
+                const rateInput = document.getElementById('propofol-rate');
+                if(rateInput) rateInput.value = '';
+            }
+        }
+        calculateAll();
     }
 
     function toggleKKMP() {
@@ -1551,6 +1612,13 @@
         updateProtocolAndMeds(calcWeight, aee, bmi, ibw);
         
         runScreening();
+        
+        const rs1 = document.getElementById('rs-bmi')?.checked || false;
+        const rs2 = document.getElementById('rs-weightloss')?.checked || false;
+        const rs3 = document.getElementById('rs-fasting')?.checked || false;
+        const rs4 = document.getElementById('rs-lytes')?.checked || false;
+        safeSetDisplay('rs-tactics', (rs1 || rs2 || rs3 || rs4) ? 'block' : 'none');
+        
         calculateBEN();
         checkMetabolism();
         calculateNitrogenBalance();
@@ -1664,15 +1732,48 @@
         let targetPnKcal = aee - targetEnKcal;
         if (targetPnKcal < 0) targetPnKcal = 0;
 
+        // --- РАСЧЕТ ПРОПОФОЛА (Универсальный) ---
+        const hasPropofol = document.getElementById('has-propofol')?.checked;
+        let propofolKcal = 0;
+        let propofolFat = 0;
+
+        if (hasPropofol) {
+            const propofolRate = parseFloat(document.getElementById('propofol-rate')?.value) || 0;
+            const propofolVol = propofolRate * 24;
+            propofolKcal = Math.round(propofolVol * 1.1);
+            propofolFat = Math.round(propofolVol * 0.1);
+
+            if (propofolRate > 0) {
+                safeSetDisplay('propofol-info', 'flex');
+                safeSet('propofol-info-text', `~ ${propofolKcal} ${u('kcal')} (${propofolFat} ${u('g')})`);
+
+                if (propofolFat >= (calcWeight * 0.7)) {
+                    safeSetDisplay('propofol-alert', 'block');
+                } else {
+                    safeSetDisplay('propofol-alert', 'none');
+                }
+            } else {
+                safeSetDisplay('propofol-info', 'none');
+                safeSetDisplay('propofol-alert', 'none');
+            }
+        } else {
+            safeSetDisplay('propofol-info', 'none');
+            safeSetDisplay('propofol-alert', 'none');
+        }
+
+        // Вычитаем калории пропофола из общей потребности в энергии ПП
+        let netPnKcal = targetPnKcal - propofolKcal;
+        if (netPnKcal < 0) netPnKcal = 0;
+
         let pnVol = 0;
         let pnMaxAllowed = 0;
 
         if (pnType === '3in1') {
-            pnVol = Math.round(targetPnKcal / 1.0); 
+            pnVol = Math.round(netPnKcal / 1.0); 
             pnMaxAllowed = Math.round(calcWeight * 35); 
             
             safeSet('pn-target-label', t('pn_target_kcal'));
-            safeSet('pn-target-prot', `${targetPnKcal}${u('kcal')}`);
+            safeSet('pn-target-prot', `${netPnKcal}${u('kcal')}`);
             safeSet('pn-vol-label', (lang === 'ru') ? 'Объем 3-в-1:' : '3-in-1 Volume:');
             safeSet('pn-vol', pnVol > 0 ? `~ ${pnVol}${u('ml_day')} (${Math.round((pnVol/100)*5)}${u('g')} белка)` : `0${u('ml_day')}`);
             
@@ -1701,7 +1802,7 @@
             
             safeSetDisplay('energy-calc-box', 'block');
             
-            let nonProtKcal = targetPnKcal - (targetPnProt * 4);
+            let nonProtKcal = netPnKcal - (targetPnProt * 4);
             if (nonProtKcal < 0) nonProtKcal = 0;
             
             safeSet('pn-non-prot-kcal', nonProtKcal + u('kcal'));
@@ -1714,7 +1815,8 @@
             
             if (addLipids) {
                 let targetGramsPerKg = addGlucose ? 1.0 : 1.5;
-                let maxLipidGrams = Math.round(calcWeight * targetGramsPerKg * (pnRatio / 100));
+                let maxLipidGrams = Math.round(calcWeight * targetGramsPerKg * (pnRatio / 100)) - propofolFat;
+                if (maxLipidGrams < 0) maxLipidGrams = 0;
                 
                 lipidKcal = maxLipidGrams * 9;
                 if (lipidKcal > nonProtKcal) { 
